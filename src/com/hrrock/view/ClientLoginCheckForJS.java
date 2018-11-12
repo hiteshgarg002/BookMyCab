@@ -22,52 +22,51 @@ import com.hrrock.model.Client;
 @WebServlet("/ClientLoginCheckForJS")
 public class ClientLoginCheckForJS extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ClientLoginCheckForJS() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-//	@SuppressWarnings("deprecation")
+	public ClientLoginCheckForJS() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	// @SuppressWarnings("deprecation")
 	@SuppressWarnings("deprecation")
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		Client C=ClientController.checkPassword(request.getParameter("uid"), request.getParameter("pwd"));
-	       PrintWriter out=response.getWriter();
-			 
-	       if(C!=null)
-	       { 
-	    	   HttpSession ses=request.getSession();
-	    	   ses.putValue("SCLIENT", C);
-	    	   ses.putValue("LTIME", new java.util.Date().toString());
-	    	   ses.setMaxInactiveInterval(15*60); //15 minute
-	    	   
-	    	   JSONObject obj=new JSONObject();
-			    try {
-					obj.put("res", "1");
-				    out.println(obj);
-			    } catch (JSONException e) {
-					e.printStackTrace();
-				}
+
+		Client C = ClientController.checkPassword(request.getParameter("uid"), request.getParameter("pwd"));
+		PrintWriter out = response.getWriter();
+
+		if (C != null) {
+			HttpSession ses = request.getSession();
+			ses.putValue("SCLIENT", C);
+			ses.putValue("LTIME", new java.util.Date().toString());
+			ses.setMaxInactiveInterval(15 * 60); // 15 minute
+
+			JSONObject obj = new JSONObject();
+			try {
+				obj.put("res", "1");
+				out.println(obj);
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
-			else
-			{  
-				JSONObject obj=new JSONObject();
-				try {
-					obj.put("res", "0");
-					out.println(obj);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
+		} else {
+			JSONObject obj = new JSONObject();
+			try {
+				obj.put("res", "0");
+				out.println(obj);
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
-		
+		}
+
 	}
 
 }

@@ -15,27 +15,29 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AdminLogin")
 public class AdminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AdminLogin() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AdminLogin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	//	response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		PrintWriter out=response.getWriter();
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<head>");
 		out.println("    <link href='admin/css/application.min.css' rel='stylesheet'>");
-		//out.println("    <link href='bootstrap.min.css' rel='stylesheet'>");
+		// out.println(" <link href='bootstrap.min.css' rel='stylesheet'>");
 		out.println("    <script src='admin/lib/jquery/jquery-2.0.3.min.js'></script>");
 		out.println("    <script src='admin/lib/jquery-pjax/jquery.pjax.js'></script>");
 		out.println("    <script src='admin/lib/backbone/underscore-min.js'></script>");
@@ -75,23 +77,22 @@ public class AdminLogin extends HttpServlet {
 		out.println("<span class='small-circle'><i class='fa fa-caret-right' style='margin-top:3px;'></i></span>");
 		out.println("<small>Sign In</small>");
 		out.println("</button>");
-		//out.println("<div class='forgot'><a class='forgot' href='#'>Forgot Username or Password?</a></div>");
+		// out.println("<div class='forgot'><a class='forgot' href='#'>Forgot Username
+		// or Password?</a></div>");
 		out.println("</div>");
 		out.println("</form>");
 		out.println("</div>");
 		out.println("<footer>");
-	//	out.println("<div class='facebook-login'>");
-	//	out.println("<a href='UserCategoryView'><span> User Form</span></a>");
-	//	out.println("</div>");
+		// out.println("<div class='facebook-login'>");
+		// out.println("<a href='UserCategoryView'><span> User Form</span></a>");
+		// out.println("</div>");
 		out.println("</footer>");
 		out.println("</section>");
 		out.println("</div>");
 		out.println("</body>");
 		out.println("</html>");
-		
-		
 
 		out.flush();
 	}
-		
+
 }

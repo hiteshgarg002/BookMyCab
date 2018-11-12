@@ -19,45 +19,45 @@ import com.hrrock.model.Agency;
 @WebServlet("/ApplyBid")
 public class ApplyBid extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ApplyBid() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ApplyBid() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+
 		PrintWriter out = response.getWriter();
-		out.println("<html>"
-				+ "<form action='ApplyBidSubmit'>");
-		
-		HttpSession ses= request.getSession();
-		Agency A=(Agency) ses.getAttribute("SAGENCY");
-		
-		out.println("<table>"
-				+ "<caption><b><i>Agency Bid Register</i></b></caption>"
-				+ "<tr><td><b><i>Agency Id:</i></b></td><td><input type=text name=aid value='"+A.getAgencyid()+"'></td></tr>"
-				+ "<tr><td><b><i>Booking Id:</i></b></td><td><input type=text name=bid value='"+request.getParameter("bid")+"'></td></tr>");
-				Calendar C= Calendar.getInstance();
-		//		String ampm[]={"AM","PM"};
-				String cd=C.get(Calendar.YEAR)+"/"+(C.get(Calendar.MONTH)+1)+"/"+C.get(Calendar.DATE);
-				String ct=C.get(Calendar.HOUR)+":"+C.get(Calendar.MINUTE)+":"+C.get(Calendar.SECOND);
-				//+" "+ampm[C.get(Calendar.AM_PM)];
-		out.println("<tr><td><b><i>Current Date:</i></b></td><td><input type=text name=cd value='"+cd+"'></td></tr>"
-				+ "<tr><td><b><i>Current Time:</i></b></td><td><input type=text name=ct value='"+ct+"'></td></tr>"
+		out.println("<html>" + "<form action='ApplyBidSubmit'>");
+
+		HttpSession ses = request.getSession();
+		Agency A = (Agency) ses.getAttribute("SAGENCY");
+
+		out.println("<table>" + "<caption><b><i>Agency Bid Register</i></b></caption>"
+				+ "<tr><td><b><i>Agency Id:</i></b></td><td><input type=text name=aid value='" + A.getAgencyid()
+				+ "'></td></tr>" + "<tr><td><b><i>Booking Id:</i></b></td><td><input type=text name=bid value='"
+				+ request.getParameter("bid") + "'></td></tr>");
+		Calendar C = Calendar.getInstance();
+		// String ampm[]={"AM","PM"};
+		String cd = C.get(Calendar.YEAR) + "/" + (C.get(Calendar.MONTH) + 1) + "/" + C.get(Calendar.DATE);
+		String ct = C.get(Calendar.HOUR) + ":" + C.get(Calendar.MINUTE) + ":" + C.get(Calendar.SECOND);
+		// +" "+ampm[C.get(Calendar.AM_PM)];
+		out.println("<tr><td><b><i>Current Date:</i></b></td><td><input type=text name=cd value='" + cd + "'></td></tr>"
+				+ "<tr><td><b><i>Current Time:</i></b></td><td><input type=text name=ct value='" + ct + "'></td></tr>"
 				+ "<tr><td><b><i>Booking Amount:</i></b></td><td><input type=text name=ba></td></tr>"
-				+ "<tr><td><input type=submit ></td><td><input type=reset></td></tr>"
-				+ "</table></form></html>");
+				+ "<tr><td><input type=submit ></td><td><input type=reset></td></tr>" + "</table></form></html>");
 		out.flush();
-		
+
 	}
 
 }

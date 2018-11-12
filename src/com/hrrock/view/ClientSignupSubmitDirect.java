@@ -18,27 +18,28 @@ import com.hrrock.model.Client;
 @WebServlet("/ClientSignupSubmitDirect")
 public class ClientSignupSubmitDirect extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ClientSignupSubmitDirect() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ClientSignupSubmitDirect() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		PrintWriter out= response.getWriter();
-		
-		
+		PrintWriter out = response.getWriter();
+
 		out.println("<html>");
-		Client C=new Client();
-		
+		Client C = new Client();
+
 		C.setEmail(request.getParameter("email"));
 		C.setMobile(request.getParameter("mobile"));
 		C.setFirstname(request.getParameter("fname"));
@@ -49,19 +50,18 @@ public class ClientSignupSubmitDirect extends HttpServlet {
 		C.setState(request.getParameter("state"));
 		C.setCity(request.getParameter("city"));
 		C.setPassword(request.getParameter("pwd"));
-		
-		boolean st=ClientController.AddNewRecord(C);
-		if(st)
-		{	
+
+		boolean st = ClientController.AddNewRecord(C);
+		if (st) {
 			out.println("<b>Record Submitted</b>");
 			response.sendRedirect("ClientHomeDirect");
-		}	
-		else { out.println("<b>Fail to submit Record</b>"); }
-			
+		} else {
+			out.println("<b>Fail to submit Record</b>");
+		}
+
 		out.println("</html>");
 		out.flush();
-		
-	
+
 	}
 
 }

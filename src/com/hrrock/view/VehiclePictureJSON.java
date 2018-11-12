@@ -22,28 +22,30 @@ import com.hrrock.controller.PhotographController;
 @WebServlet("/VehiclePictureJSON")
 public class VehiclePictureJSON extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public VehiclePictureJSON() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public VehiclePictureJSON() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out=response.getWriter();
-		 
-		ResultSet rs=PhotographController.getVehiclePictures(request.getParameter("vid"));
-				
-		ArrayList<JSONObject> obj=DBHelper.JsonEngine(rs);
+		PrintWriter out = response.getWriter();
+
+		ResultSet rs = PhotographController.getVehiclePictures(request.getParameter("vid"));
+
+		ArrayList<JSONObject> obj = DBHelper.JsonEngine(rs);
 		out.println(obj);
-	
+
 	}
 
 }

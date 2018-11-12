@@ -19,38 +19,38 @@ import com.hrrock.model.Agency;
 @WebServlet("/AgencyLoginCheck")
 public class AgencyLoginCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AgencyLoginCheck() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AgencyLoginCheck() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	@SuppressWarnings("deprecation")
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		Agency A=AgencyController.checkPassword(request.getParameter("aid"), request.getParameter("pwd"));
-	       PrintWriter out=response.getWriter();
-			 
-	       if(A!=null)
-	       { HttpSession ses=request.getSession();
-	         ses.putValue("SAGENCY", A);
-	         ses.putValue("SLTIME", new java.util.Date().toString());
-	         ses.setMaxInactiveInterval(15*60); //15 minute  
-	    	   response.sendRedirect("AgencyHome");
-	        }
-	       else
-	       {out.println("<html>Invalid AgencyId/Password</html>");
-	    	   
-	       }
-		
-		
+
+		Agency A = AgencyController.checkPassword(request.getParameter("aid"), request.getParameter("pwd"));
+		PrintWriter out = response.getWriter();
+
+		if (A != null) {
+			HttpSession ses = request.getSession();
+			ses.putValue("SAGENCY", A);
+			ses.putValue("SLTIME", new java.util.Date().toString());
+			ses.setMaxInactiveInterval(15 * 60); // 15 minute
+			response.sendRedirect("AgencyHome");
+		} else {
+			out.println("<html>Invalid AgencyId/Password</html>");
+
+		}
+
 	}
 
 }

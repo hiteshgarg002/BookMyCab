@@ -22,24 +22,26 @@ import com.hrrock.controller.StateCityController;
 @WebServlet("/ClientCityJSON")
 public class ClientCityJSON extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ClientCityJSON() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ClientCityJSON() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());	
-		PrintWriter out=response.getWriter();
-		ResultSet rs=StateCityController.getAllCities(); 
-        ArrayList<JSONObject> obj=DBHelper.JsonEngine(rs);
-        out.println(obj);
-	}		
+		// response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter out = response.getWriter();
+		ResultSet rs = StateCityController.getAllCities();
+		ArrayList<JSONObject> obj = DBHelper.JsonEngine(rs);
+		out.println(obj);
+	}
 }

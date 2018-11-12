@@ -19,37 +19,36 @@ import com.hrrock.model.Client;
 @WebServlet("/ClientLoginCheck")
 public class ClientLoginCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ClientLoginCheck() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ClientLoginCheck() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		Client C=ClientController.checkPassword(request.getParameter("uid"), request.getParameter("pwd"));
-	       PrintWriter out=response.getWriter();
-			 
-	       if(C!=null)
-	       { 
-	    	   HttpSession ses=request.getSession();
-	    	   ses.setAttribute("SCLIENT", C);
-	    	   ses.setAttribute("LTIME", new java.util.Date().toString());
-	    	   ses.setMaxInactiveInterval(15*60); //15 minute
-	    	   response.sendRedirect("ClientHomeDirect");
-	       }
-	       else {
-	    	   out.println("<html><b><font color=red>Invalid EmailId/Password</font></b></html>");
-	       }
-	    
-		
+
+		Client C = ClientController.checkPassword(request.getParameter("uid"), request.getParameter("pwd"));
+		PrintWriter out = response.getWriter();
+
+		if (C != null) {
+			HttpSession ses = request.getSession();
+			ses.setAttribute("SCLIENT", C);
+			ses.setAttribute("LTIME", new java.util.Date().toString());
+			ses.setMaxInactiveInterval(15 * 60); // 15 minute
+			response.sendRedirect("ClientHomeDirect");
+		} else {
+			out.println("<html><b><font color=red>Invalid EmailId/Password</font></b></html>");
+		}
+
 	}
 
 }
